@@ -16,21 +16,93 @@ SecurePay is a full-stack PHP web app simulating a secure E-Wallet system and a 
 
 ## Setup
 
-1. Import `users_table.sql` and `wallets_transactions_tables.sql` into MySQL.
-2. Update DB credentials in `includes/db_connect.php`.
-3. Run with PHP built-in server:
-   ```
+### Prerequisites
+
+- XAMPP (recommended) or PHP 7.4+ with MySQL
+- Web browser (Chrome, Firefox, Safari, Edge)
+
+### XAMPP Setup (Recommended)
+
+1. **Download and Install XAMPP**
+
+   - Download XAMPP from [https://www.apachefriends.org/](https://www.apachefriends.org/)
+   - Install XAMPP on your system
+   - Launch XAMPP Control Panel
+
+2. **Start Services**
+
+   - Start **Apache** server
+   - Start **MySQL** database
+   - Ensure both services show "Running" status
+
+3. **Project Setup**
+
+   - Copy the project folder to `C:\xampp\htdocs\` (Windows) or `/Applications/XAMPP/htdocs/` (Mac)
+   - Rename the folder to `SecurePay` for easier access
+   - Full path should be: `C:\xampp\htdocs\SecurePay\`
+
+4. **Database Setup**
+
+   - Open phpMyAdmin: `http://localhost/phpmyadmin/`
+   - Create a new database named `securepay_db`
+   - Import the SQL files in this order:
+     - First: `users_table.sql`
+     - Second: `wallets_transactions_tables.sql`
+     - Optional: `make_sagar_admin.sql` (creates admin user)
+
+5. **Configure Database Connection**
+
+   - Edit `includes/db_connect.php`
+   - Update database credentials:
+     ```php
+     $servername = "localhost";
+     $username = "root";
+     $password = "";  // Default XAMPP MySQL password is empty
+     $dbname = "securepay_db";
+     ```
+
+6. **Access the Application**
+   - Main app: `http://localhost/SecurePay/`
+   - Admin panel: `http://localhost/SecurePay/admin/`
+   - Cyber Lab: `http://localhost/SecurePay/cyberlab/`
+
+### Alternative: PHP Built-in Server
+
+If you prefer not to use XAMPP:
+
+1. Ensure PHP 7.4+ and MySQL are installed
+2. Update database credentials in `includes/db_connect.php`
+3. Run from project directory:
+   ```bash
    php -S localhost:8000
    ```
-   Or use XAMPP at `http://localhost/Web_Tech_Project/`
+4. Access at: `http://localhost:8000/`
 
 ## Usage
 
-- Main app: `http://localhost/Web_Tech_Project/`
-- Admin panel: `http://localhost/Web_Tech_Project/admin/index.php` (admin login required)
-- User management: `http://localhost/Web_Tech_Project/admin/users.php`
-- Transaction logs: `http://localhost/Web_Tech_Project/admin/transactions.php`
-- Cyber Lab: `http://localhost/Web_Tech_Project/cyberlab/` (toggle secure/vulnerable mode)
+### With XAMPP Setup
+
+- Main app: `http://localhost/SecurePay/`
+- Admin panel: `http://localhost/SecurePay/admin/index.php` (admin login required)
+- User management: `http://localhost/SecurePay/admin/users.php`
+- Transaction logs: `http://localhost/SecurePay/admin/transactions.php`
+- Cyber Lab: `http://localhost/SecurePay/cyberlab/` (toggle secure/vulnerable mode)
+
+### With PHP Built-in Server
+
+- Main app: `http://localhost:8000/`
+- Admin panel: `http://localhost:8000/admin/index.php`
+- User management: `http://localhost:8000/admin/users.php`
+- Transaction logs: `http://localhost:8000/admin/transactions.php`
+- Cyber Lab: `http://localhost:8000/cyberlab/`
+
+### Default Admin Credentials
+
+If you imported `make_sagar_admin.sql`:
+
+- **Username:** admin
+- **Password:** admin123
+- **Email:** admin@securepay.com
 
 ## Admin Panel
 
@@ -46,9 +118,25 @@ SecurePay is a full-stack PHP web app simulating a secure E-Wallet system and a 
 
 ## Troubleshooting
 
-- "Not Found" errors: Check your URL and project folder location.
-- "Unknown column ... in field list" errors: Update your table or code to match column names.
-- Undefined array key warnings: The code will show "-" for missing fields.
+### XAMPP Issues
+
+- **Apache won't start**: Check if port 80 is occupied by another service (Skype, IIS). Change Apache port in XAMPP config or stop conflicting services.
+- **MySQL won't start**: Port 3306 might be occupied. Check XAMPP control panel for error messages.
+- **"Access forbidden" error**: Ensure project is in `htdocs` folder and folder permissions allow reading.
+- **Database connection failed**: Verify MySQL is running and credentials in `includes/db_connect.php` are correct.
+
+### General Issues
+
+- **"Not Found" errors**: Check your URL and project folder location.
+- **"Unknown column ... in field list" errors**: Update your table or code to match column names.
+- **Undefined array key warnings**: The code will show "-" for missing fields.
+- **Session issues**: Clear browser cookies and cache, ensure sessions are enabled in PHP configuration.
+
+### Common URL Issues
+
+- XAMPP users: Use `http://localhost/SecurePay/` (not `Web_Tech_Project`)
+- PHP server users: Use `http://localhost:8000/`
+- Ensure no trailing spaces in URLs
 
 ## Conventions & Security
 
