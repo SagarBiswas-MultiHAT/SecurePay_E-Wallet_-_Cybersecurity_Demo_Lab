@@ -4,7 +4,7 @@
   <img src="./imgs/SecurePAY.png" alt="SecurePay Logo" width="180"/>
 </p>
 
-SecurePay is a hands‑on PHP/MySQL E‑Wallet application paired with a small Cybersecurity Demo Lab. It’s built for learning: follow real wallet flows (auth, balance, transfers, history, admin) and then jump into a toggleable lab to see common web attacks and their mitigations side‑by‑side.
+SecurePay is a PHP/MySQL E-Wallet system paired with a Cybersecurity Demo Lab. It includes user auth, balance management, transfers, admin tools, and security controls like hashing, CSRF tokens, session timeout, and login lockout. The built-in lab lets you toggle Vulnerable/Secure modes to observe XSS, session hijacking, and mitigations. A fully local learning project for web security and wallet workflows.
 
 — No frameworks, just readable PHP/HTML/CSS/JS.
 
